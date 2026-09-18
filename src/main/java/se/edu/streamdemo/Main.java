@@ -1,5 +1,8 @@
 package se.edu.streamdemo;
 
+import static java.util.stream.Collectors.filtering;
+import static java.util.stream.Collectors.toList;
+
 import se.edu.streamdemo.data.Datamanager;
 import se.edu.streamdemo.task.Deadline;
 import se.edu.streamdemo.task.Task;
@@ -18,9 +21,12 @@ public class Main {
 
         System.out.println("Printing deadlines ...");
         printDeadlines(tasksData);
+        printDeadlinesUsingStreams(tasksData);
 
         System.out.println("Total number of deadlines: " + countDeadlines(tasksData));
 
+        ArrayList<Task> filteredList = filterTasksByString(tasksData, "10")
+        printAllData(filteredList);
     }
 
     private static int countDeadlines(ArrayList<Task> tasksData) {
